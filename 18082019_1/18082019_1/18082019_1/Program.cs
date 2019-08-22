@@ -7,12 +7,13 @@ namespace _18082019_1
 {
     class Program
     {
+        // Вводим 5 чисел. Вычислить макс. и мин. число
         static void Main(string[] args)
         {
 
             int Max = 0;
             int Min = 0;
-            bool isChoice = false;//
+            bool isChoice = false;
             for (int i = 1; i <= 5; i++)
             {
                 Console.WriteLine("Введите число № " + i.ToString());
@@ -41,8 +42,14 @@ namespace _18082019_1
                     Console.WriteLine("Введены некорректные данные!. Необходимо вводить только числа!");
                 }
             }
-
-            Console.WriteLine("Макс. число: {0}  Мин. число: {1}", Max, Min);
+            if (isChoice)
+            {
+                Console.WriteLine("Макс. число: {0}  Мин. число: {1}", Max, Min);
+            }
+            else
+            {
+                Console.WriteLine("Введенные данные некорректны. Не удалось вычислить минимальное и максимальное число");
+            }
             Console.ReadLine();
             Console.WriteLine();
 
