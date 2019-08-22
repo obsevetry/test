@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+// Вводим 5 чисел. Вычислить макс. и мин. число
+
 namespace _20190818_1
 {
     class Program
     {
-        // Вводим 5 чисел. Вычислить макс. и мин. число
         static void Main(string[] args)
         {
-
             int Max = 0;
             int Min = 0;
             bool isChoice = false;
@@ -20,28 +20,28 @@ namespace _20190818_1
                 string input = Console.ReadLine();
                 int x = 0;
                 bool result = int.TryParse(input, out x);
-                if (result == true)
+                if (result != true)
                 {
-                    if (isChoice == false)
-                    {
-                        Max = x;
-                        Min = x;
-                    }
-                    isChoice = true;
-                    if (x >= Max)
-                    {
-                        Max = x;
-                    }
-                    if (x < Min)
-                    {
-                        Min = x;
-                    }
+                    Console.WriteLine("Введены некорректные данные! Необходимо вводить только целые числа!");
+                    continue;
                 }
-                else
+                if (isChoice == false)
                 {
-                    Console.WriteLine("Введены некорректные данные!. Необходимо вводить только числа!");
+                    Max = x;
+                    Min = x;
+                    isChoice = true;
+                    continue;
+                }       
+                if (x > Max)
+                {
+                    Max = x;
+                }
+                if (x < Min)
+                {
+                    Min = x;
                 }
             }
+            
             if (isChoice)
             {
                 Console.WriteLine("Макс. число: {0}  Мин. число: {1}", Max, Min);
