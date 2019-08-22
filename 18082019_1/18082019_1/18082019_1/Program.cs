@@ -12,7 +12,7 @@ namespace _18082019_1
 
             int Max = 0;
             int Min = 0;
-            bool isChoice = false;
+            bool isChoice = false;//
             for (int i = 1; i <= 5; i++)
             {
                 Console.WriteLine("Введите число № " + i.ToString());
