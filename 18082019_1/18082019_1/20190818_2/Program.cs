@@ -9,6 +9,36 @@ namespace _20190818_2
     {
         static void Main(string[] args)
         {
+
+
+            for (int j = 0; j < 5; j++)
+            {
+                var watch = System.Diagnostics.Stopwatch.StartNew();
+
+                for (int i = 0; i < 100000000; i++)
+                {
+                    int p = i;
+                }
+
+                watch.Stop();
+                var elapsedMs = watch.ElapsedMilliseconds;
+                Console.WriteLine("i++: {0}", elapsedMs);
+
+                watch.Reset();
+                watch.Start();
+
+                for (int i = 0; i < 100000000; ++i)
+                {
+                    int p = i;
+                }
+
+                watch.Stop();
+                elapsedMs = watch.ElapsedMilliseconds;
+                Console.WriteLine("++i: {0}", elapsedMs);
+                Console.WriteLine("__________________");
+                Console.ReadKey();
+            }
+
         }
     }
 }
