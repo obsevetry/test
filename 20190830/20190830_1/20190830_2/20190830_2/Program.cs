@@ -15,9 +15,21 @@ namespace _20190830_2
             Console.WriteLine("Введите строку для проверки на палиндром:");
             string firstSrting = Console.ReadLine();
 
+            // Уберем пробелы
             firstSrting = firstSrting.Replace(" ", "");
-            string strReverse = "";
+            firstSrting = firstSrting.ToUpper();
 
+            // Уберем символы
+            for (int i = 0; i < firstSrting.Length; i++)
+            {
+                if (!char.IsLetterOrDigit(firstSrting[i]))
+                {
+                    firstSrting = firstSrting.Replace(firstSrting[i].ToString(), "");
+                }
+            }
+
+            string strReverse = "";
+            // Формируем строку реверс
             for (int i = firstSrting.Length - 1; i >= 0; i--)
             {
                 strReverse += firstSrting[i];
