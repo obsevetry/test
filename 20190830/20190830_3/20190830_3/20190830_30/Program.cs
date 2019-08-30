@@ -24,8 +24,8 @@ namespace _20190830_3
                 // Обход и проверка конкретного вида скобки
                 for (int j = 0; j < openSkobs.Length; j++)
                 {
-                    string currentOpenScob = openSkobs[j].ToString();
-                    string currentclosedScob = closedSkobs[j].ToString();
+                    char currentOpenScob = openSkobs[j];
+                    char currentclosedScob = closedSkobs[j];
 
                     // Количество скобок также должно быть одинаково
                     if (strInput.Split(currentOpenScob).Length == strInput.Split(currentclosedScob).Length)
@@ -34,18 +34,26 @@ namespace _20190830_3
                         // на каждую открытую ищем закрытую скобку,
                         // и первая скобка обязательно должна быть открытой
                         bool firstFindScobIsGood = false;
+
                         for (int i = 0; i < strInput.Length; i++)
                         {
                             // Обрабатываем только скобки одного вида
-                            if (strInput[i].ToString() != currentOpenScob && strInput[i].ToString() != currentclosedScob)
+                            if (strInput[i] != currentOpenScob && strInput[i] != currentclosedScob)
                             {
                                 continue;
                             }
-                            if (currentOpenScob == strInput[i].ToString())
+                            if (currentOpenScob == strInput[i])
                             {
                                 firstFindScobIsGood = true;
                             }
-                            if (!firstFindScobIsGood && currentclosedScob == strInput[i].ToString())
+                            else
+                            {
+                                if (i > 0)
+                                {
+                                    firstFindScobIsGood = false;
+                                }
+                            }
+                            if (!firstFindScobIsGood && currentclosedScob == strInput[i])
                             {
                                 isError = true;
                                 break;
