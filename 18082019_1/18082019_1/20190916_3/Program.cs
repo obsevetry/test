@@ -8,18 +8,17 @@ namespace _20190916_3
     class Program
     {
 
-        public static int GetMinMaxNumber(int counter, int maxNumberSupport, int minNumberSupport, out int maxNumber, out int minNumber)
+        public static void GetMinMaxNumber(int counter, int maxNumberSupport, int minNumberSupport, out int maxNumber, out int minNumber)
         {
 
             if (counter == 0)
             {
                 maxNumber = maxNumberSupport;
                 minNumber = minNumberSupport;
-                return 1;
+                return;
             }
             else
             {
-
 
                 string Result = Console.ReadLine();
 
@@ -27,7 +26,7 @@ namespace _20190916_3
                 {
                     maxNumber = maxNumberSupport;
                     minNumber = minNumberSupport;
-                    return 1;
+                    return;
                 }
 
                 int currentNumber = 0;
@@ -59,7 +58,7 @@ namespace _20190916_3
                 maxNumber = currentMax;
                 minNumber = currentMin;
 
-                return GetMinMaxNumber(counter - 1, currentMax, currentMin, out maxNumber, out minNumber);
+                GetMinMaxNumber(counter - 1, currentMax, currentMin, out maxNumber, out minNumber);
             }
 
         }
