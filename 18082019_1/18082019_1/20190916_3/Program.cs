@@ -19,7 +19,6 @@ namespace _20190916_3
             }
             else
             {
-
                 string Result = Console.ReadLine();
 
                 if (Result == "=")
