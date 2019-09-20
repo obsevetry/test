@@ -86,7 +86,6 @@ namespace _20190916_3
             Console.WriteLine("Минимальное число {0}", minNumber);
             Console.WriteLine("Максимальное число {0}", maxNumber);
 
-
         }
     }
 }
