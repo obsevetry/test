@@ -9,19 +9,37 @@ namespace _20191213_Figures.Models
     {
         #region Protected fields
 
-        Coordinates _centerPosition = new Coordinates();
+        protected Coordinates _centerPosition = new Coordinates();
+
+        protected ConsoleColor _color = ConsoleColor.DarkGreen;
+
+        protected  PenType _penType = PenType.Point;
 
         #endregion
-`
 
+        public void Move()
+        {
+        }
+
+        public void Select()
+        {
+        }
+
+        public void Rotate()
+        {
+        }
+
+        public void Display()
+        {
+        }
     }
 
     public class Coordinates
     {
         #region Private fields
 
-        protected int _x;
-        protected int _y;
+        protected int _x = 0;
+        protected int _y = 0;
 
         #endregion
 
@@ -71,4 +89,5 @@ namespace _20191213_Figures.Models
         }
 
     }
+
 }

@@ -40,7 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums.cs" />
+    <Compile Include="Models\Arc.cs" />
+    <Compile Include="Models\Circle.cs" />
+    <Compile Include="Models\Line.cs" />
+    <Compile Include="Models\Polygon.cs" />
+    <Compile Include="Models\Vector.cs" />
     <Compile Include="Models\Figure.cs" />
+    <Compile Include="Models\TwoDimensional.cs" />
+    <Compile Include="Models\Point.cs" />
+    <Compile Include="Models\OneDimensional.cs" />
+    <Compile Include="Models\ZeroDimensional.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
