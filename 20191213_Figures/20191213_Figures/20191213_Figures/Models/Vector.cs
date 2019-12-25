@@ -7,7 +7,7 @@ namespace _20191213_Figures.Models
 {
     public class Vector
     {
-        #region Private fields
+        #region Protected fields
 
         protected int _a;
         protected int _b;

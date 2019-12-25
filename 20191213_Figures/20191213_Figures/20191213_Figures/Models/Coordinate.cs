@@ -5,36 +5,7 @@ using System.Text;
 
 namespace _20191213_Figures.Models
 {
-    public class Figure
-    {
-        #region Protected fields
-
-        protected Coordinates _centerPosition = new Coordinates();
-
-        protected ConsoleColor _color = ConsoleColor.DarkGreen;
-
-        protected  PenType _penType = PenType.Point;
-
-        #endregion
-
-        public void Move()
-        {
-        }
-
-        public void Select()
-        {
-        }
-
-        public void Rotate()
-        {
-        }
-
-        public void Display()
-        {
-        }
-    }
-
-    public class Coordinates
+    public class Coordinate
     {
         #region Private fields
 
