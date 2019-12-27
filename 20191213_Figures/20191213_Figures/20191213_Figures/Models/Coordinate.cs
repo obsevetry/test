@@ -14,6 +14,12 @@ namespace _20191213_Figures.Models
 
         #endregion
 
+        public Coordinate(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
         #region Properies
         public int X
         {

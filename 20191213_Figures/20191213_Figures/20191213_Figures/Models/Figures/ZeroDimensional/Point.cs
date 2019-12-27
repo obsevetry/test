@@ -7,5 +7,8 @@ namespace _20191213_Figures.Models.Figures.ZeroDimensional
 {
     class Point : ZeroDimensional
     {
+        public static void Show()
+        { 
+        }
     }
 }
