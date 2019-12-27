@@ -14,6 +14,12 @@ namespace _20191213_Figures.Models
 
         #endregion
 
+        public Coordinate()
+        {
+            X = 0;
+            Y = 0;
+        }
+
         public Coordinate(int x, int y)
         {
             X = x;
@@ -29,7 +35,12 @@ namespace _20191213_Figures.Models
             }
             set
             {
-                SetX(value);
+                if (value < 0)
+                {
+                    return;
+                }
+
+                _x = value;
             }
         }
 
@@ -41,30 +52,15 @@ namespace _20191213_Figures.Models
             }
             set
             {
-                SetY(value);
+                if (value < 0)
+                {
+                    return;
+                }
+
+                _y = value; 
             }
         }
         #endregion
-
-        public void SetX(int x)
-        {
-            if (x < 0)
-            {
-                return;
-            }
-
-            _x = x;
-        }
-        public void SetY(int y)
-        {
-            if (y < 0)
-            {
-                return;
-            }
-
-            _y = y;
-        }
-
     }
 
 }

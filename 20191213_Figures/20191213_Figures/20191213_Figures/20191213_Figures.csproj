@@ -54,6 +54,7 @@
     <Compile Include="Models\Figures\ZeroDimensional\ZeroDimensional.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />

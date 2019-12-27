@@ -11,4 +11,5 @@ namespace _20191213_Figures
         Dash = 1,
         Star = 2,
     }
+
 }

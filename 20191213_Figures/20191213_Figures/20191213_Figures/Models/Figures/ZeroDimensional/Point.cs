@@ -7,8 +7,24 @@ namespace _20191213_Figures.Models.Figures.ZeroDimensional
 {
     class Point : ZeroDimensional
     {
-        public static void Show()
-        { 
+        public void Show()
+        {
+            ShowOneTip();
         }
+
+        public void Move(Coordinate NewCenterPosition)
+        {
+
+            СlearDisplayedFigure();
+
+            CenterPosition = NewCenterPosition;
+
+            ShowOneTip();
+        }
+
+        //public static void Rotate()
+        //{
+        //}
+
     }
 }
