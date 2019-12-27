@@ -27,9 +27,6 @@ namespace _20191213_Figures.Models.Figures.OneDimensional
 
         public void CalculateEquationParameters(Coordinate startPosition, Coordinate endPosition)
         {
-            int StartX = Math.Min(startPosition.X, endPosition.X);
-            int EndX = Math.Max(startPosition.X, endPosition.X);
-
             if (startPosition.X > endPosition.X)
             {
                 _StartPositionPrint.X = endPosition.X;
