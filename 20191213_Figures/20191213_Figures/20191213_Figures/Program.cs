@@ -1,4 +1,5 @@
 ﻿using _20191213_Figures.Models;
+using _20191213_Figures.Models.Figures.OneDimensional;
 using _20191213_Figures.Models.Figures.ZeroDimensional;
 using System;
 using System.Collections.Generic;
@@ -27,15 +28,44 @@ namespace _20191213_Figures
             Console.ReadKey();
 
             // Передвинуть точку
-            Point.СlearDisplayedFigure();
 
-            Coordinate NewCoordinate = new Coordinate(5, 5);
+            Coordinate NewCoordinate = new Coordinate(10, 20);
             Point.Move(NewCoordinate);
 
             Console.ReadKey();
 
+            Point.СlearDisplayedFigure();
+
             #endregion
 
+
+            #region Работа с прямой
+
+            // Показать прямую
+            Line Line = new Line
+            {
+                CenterPosition = new Coordinate(2, 2),
+                EndPosition = new Coordinate(20, 20),
+                Color = ConsoleColor.Green,
+                PenType = PenType.Star
+            };
+
+            Line.CalculateEquationParameters(Line.CenterPosition, Line.EndPosition);
+
+            Line.Show();
+
+            Console.ReadKey();
+
+            // Передвинуть прямую
+            Line.CenterPosition = new Coordinate(5, 5);
+
+            Line.CalculateEquationParameters(Line.CenterPosition, Line.EndPosition);
+
+            Line.Move(NewCoordinate);
+
+            Console.ReadKey();
+
+            #endregion
 
         }
     }

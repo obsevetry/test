@@ -57,13 +57,13 @@ namespace _20191213_Figures.Models.Figures
             }
         }
         #endregion
-        public void ShowOneTip()
+        public void DrawPoint(Coordinate Coordinate)
         {
-            Console.SetCursorPosition(CenterPosition.X, CenterPosition.Y);
+            Console.SetCursorPosition(Coordinate.X, Coordinate.Y);
             Console.ForegroundColor = Color;
             Console.Write(UI.GetPenPencilValue(PenType));
 
-            CoordinatesDisplayedFigure.Add(CenterPosition);
+            CoordinatesDisplayedFigure.Add(Coordinate);
         }
 
         public void СlearDisplayedFigure()

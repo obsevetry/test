@@ -9,7 +9,7 @@ namespace _20191213_Figures.Models.Figures.ZeroDimensional
     {
         public void Show()
         {
-            ShowOneTip();
+            DrawPoint(CenterPosition);
         }
 
         public void Move(Coordinate NewCenterPosition)
@@ -19,7 +19,7 @@ namespace _20191213_Figures.Models.Figures.ZeroDimensional
 
             CenterPosition = NewCenterPosition;
 
-            ShowOneTip();
+            DrawPoint(NewCenterPosition);
         }
 
         //public static void Rotate()
