@@ -63,13 +63,5 @@ namespace _20191213_Figures.Models.Figures.OneDimensional
                 DrawPoint(NewCoordinate);
 			}
         }
-
-        public void Move(Coordinate NewCenterPosition)
-        {
-
-            СlearDisplayedFigure();
-
-            Show();
-        }
     }
 }

@@ -66,13 +66,33 @@ namespace _20191213_Figures.Models.Figures
             CoordinatesDisplayedFigure.Add(Coordinate);
         }
 
-        public void СlearDisplayedFigure()
+        public void Move(Coordinate NewCenterPosition)
         {
+
+            int DeltaX = NewCenterPosition.X - _centerPosition.X;
+            int DeltaY = NewCenterPosition.Y - _centerPosition.Y;
+
+            List<Coordinate> copy = new List<Coordinate>(CoordinatesDisplayedFigure);
+
+            СlearDisplayedFigure();
+
+            foreach (var item in copy)
+            {
+                item.X = item.X + DeltaX;
+                item.Y = item.Y + DeltaY;
+                DrawPoint(item);
+            }   
+        }
+
+        public void СlearDisplayedFigure()
+        {  
             foreach (var item in CoordinatesDisplayedFigure)
             {
                 Console.SetCursorPosition(item.X, item.Y);
                 Console.Write(" ");
             }
+
+            CoordinatesDisplayedFigure.Clear();
         }
     }
 

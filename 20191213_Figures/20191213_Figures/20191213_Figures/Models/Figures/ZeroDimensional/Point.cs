@@ -11,20 +11,5 @@ namespace _20191213_Figures.Models.Figures.ZeroDimensional
         {
             DrawPoint(CenterPosition);
         }
-
-        public void Move(Coordinate NewCenterPosition)
-        {
-
-            СlearDisplayedFigure();
-
-            CenterPosition = NewCenterPosition;
-
-            DrawPoint(NewCenterPosition);
-        }
-
-        //public static void Rotate()
-        //{
-        //}
-
     }
 }

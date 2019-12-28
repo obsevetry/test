@@ -57,9 +57,7 @@ namespace _20191213_Figures
             Console.ReadKey();
 
             // Передвинуть прямую
-            Line.CenterPosition = new Coordinate(5, 5);
-
-            Line.CalculateEquationParameters(Line.CenterPosition, Line.EndPosition);
+            Line.CenterPosition = new Coordinate(10, 2);
 
             Line.Move(NewCoordinate);
 
