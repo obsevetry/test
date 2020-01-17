@@ -81,7 +81,9 @@ namespace _20191213_Figures.Models.Figures
                 item.X = item.X + DeltaX;
                 item.Y = item.Y + DeltaY;
                 DrawPoint(item);
-            }   
+            }
+
+            _centerPosition = NewCenterPosition;
         }
 
         public void СlearDisplayedFigure()

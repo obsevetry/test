@@ -28,9 +28,8 @@ namespace _20191213_Figures
             Console.ReadKey();
 
             // Передвинуть точку
-
-            Coordinate NewCoordinate = new Coordinate(10, 20);
-            Point.Move(NewCoordinate);
+            Coordinate NewPoint = new Coordinate(10, 20);
+            Point.Move(NewPoint);
 
             Console.ReadKey();
 
@@ -50,16 +49,14 @@ namespace _20191213_Figures
                 PenType = PenType.Star
             };
 
-            Line.CalculateEquationParameters(Line.CenterPosition, Line.EndPosition);
-
             Line.Show();
 
             Console.ReadKey();
 
             // Передвинуть прямую
-            Line.CenterPosition = new Coordinate(10, 2);
+            Coordinate NewStartPosition = new Coordinate(50, 10);
 
-            Line.Move(NewCoordinate);
+            Line.Move(NewStartPosition);
 
             Console.ReadKey();
 
