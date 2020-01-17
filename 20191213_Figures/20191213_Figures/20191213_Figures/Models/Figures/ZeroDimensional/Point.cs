@@ -7,7 +7,7 @@ namespace _20191213_Figures.Models.Figures.ZeroDimensional
 {
     class Point : ZeroDimensional
     {
-        public void Show()
+        public override void Show()
         {
             DrawPoint(CenterPosition);
         }

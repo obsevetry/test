@@ -5,9 +5,8 @@ using System.Text;
 
 namespace _20191213_Figures.Models.Figures
 {
-    public class Figure
+    public abstract class Figure
     {
-
         #region Protected fields
 
         protected Coordinate _centerPosition = new Coordinate();
@@ -57,6 +56,7 @@ namespace _20191213_Figures.Models.Figures
             }
         }
         #endregion
+
         public void DrawPoint(Coordinate Coordinate)
         {
             Console.SetCursorPosition(Coordinate.X, Coordinate.Y);
@@ -65,7 +65,7 @@ namespace _20191213_Figures.Models.Figures
 
             CoordinatesDisplayedFigure.Add(Coordinate);
         }
-
+        
         public void Move(Coordinate NewCenterPosition)
         {
 
@@ -85,9 +85,9 @@ namespace _20191213_Figures.Models.Figures
 
             _centerPosition = NewCenterPosition;
         }
-
+        
         public void СlearDisplayedFigure()
-        {  
+        {
             foreach (var item in CoordinatesDisplayedFigure)
             {
                 Console.SetCursorPosition(item.X, item.Y);
@@ -96,6 +96,8 @@ namespace _20191213_Figures.Models.Figures
 
             CoordinatesDisplayedFigure.Clear();
         }
+        
+        public abstract void Show();
     }
 
 }

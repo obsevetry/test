@@ -7,13 +7,16 @@ namespace _20191213_Figures.Models.Figures.TwoDimensional
 {
     class TwoDimensional : Figure
     {
-
         #region Protected fields
 
         protected Vector Orientation = new Vector();
 
         #endregion
 
+        public override void Show()
+        {
+
+        }
     }
 
 }

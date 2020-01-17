@@ -38,7 +38,7 @@ namespace _20191213_Figures.Models.Figures.OneDimensional
             _b = (Double)(_endPosition.X * _centerPosition.Y - _centerPosition.X * _endPosition.Y) / (Double)(_endPosition.X - _centerPosition.X);
         }
 
-        public void Show()
+        public override void Show()
         {
             CalculateEquationParameters();
 
