@@ -10,7 +10,7 @@ namespace _20191213_Figures.Models.Figures.OneDimensional
         protected Coordinate _endPosition = new Coordinate();
 
         private double _k = 0.0;
-        private double _b = 0.0;
+        private double _b = 0.0; //
         private Coordinate _StartPositionPrint = new Coordinate();
         private Coordinate _EndPositionPrint = new Coordinate();
         public Coordinate EndPosition
