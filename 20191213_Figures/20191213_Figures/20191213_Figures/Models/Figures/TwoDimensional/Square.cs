@@ -5,27 +5,28 @@ using System.Text;
 
 namespace _20191213_Figures.Models.Figures.TwoDimensional
 {
-    class Circle : TwoDimensional
+    class Square : Polygon
     {
-        public int R { get; set; } = 0;
+        public int D { get; set; } = 0;
 
         public override void Show()
         {
             int xi = CenterPosition.X;
             int yi = CenterPosition.Y;
-            int radius = R;
 
-            for (int x = xi - radius + 1; x < xi + radius; x++)
+            for (int x = xi - D + 1; x < xi + D; x++)
+            {
+                for (int y = yi - D + 1; y < yi + D; y++)
                 {
-                for (int y = yi - radius + 1; y < yi + radius; y++)
+                    if (Math.Abs((x - xi)) + Math.Abs((y - yi)) <= D / 2)
                     {
-                        if ((x - xi) * (x - xi) + (y - yi) * (y - yi) <= radius * radius)
-                        {
                         Coordinate NewCoordinate = new Coordinate
                         {
                             X = x,
                             Y = y
                         };
+
+                        //System.Threading.Thread.Sleep(500);
 
                         UI.DrawPoint(NewCoordinate, this);
                     }

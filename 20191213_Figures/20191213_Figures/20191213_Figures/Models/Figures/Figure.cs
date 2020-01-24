@@ -56,19 +56,9 @@ namespace _20191213_Figures.Models.Figures
             }
         }
         #endregion
-
-        public void DrawPoint(Coordinate Coordinate)
-        {
-            Console.SetCursorPosition(Coordinate.X, Coordinate.Y);
-            Console.ForegroundColor = Color;
-            Console.Write(UI.GetPenPencilValue(PenType));
-
-            CoordinatesDisplayedFigure.Add(Coordinate);
-        }
         
         public void Move(Coordinate NewCenterPosition)
         {
-
             int DeltaX = NewCenterPosition.X - _centerPosition.X;
             int DeltaY = NewCenterPosition.Y - _centerPosition.Y;
 
@@ -80,7 +70,7 @@ namespace _20191213_Figures.Models.Figures
             {
                 item.X = item.X + DeltaX;
                 item.Y = item.Y + DeltaY;
-                DrawPoint(item);
+                UI.DrawPoint(item, this);
             }
 
             _centerPosition = NewCenterPosition;

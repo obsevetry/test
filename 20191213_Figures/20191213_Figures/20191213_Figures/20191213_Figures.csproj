@@ -42,10 +42,12 @@
   <ItemGroup>
     <Compile Include="Enums.cs" />
     <Compile Include="Models\Figures\OneDimensional\Arc.cs" />
+    <Compile Include="Models\Figures\Picture.cs" />
     <Compile Include="Models\Figures\TwoDimensional\Circle.cs" />
     <Compile Include="Models\Coordinate.cs" />
     <Compile Include="Models\Figures\OneDimensional\Line.cs" />
     <Compile Include="Models\Figures\TwoDimensional\Polygon.cs" />
+    <Compile Include="Models\Figures\TwoDimensional\Square.cs" />
     <Compile Include="Models\Vector.cs" />
     <Compile Include="Models\Figures\Figure.cs" />
     <Compile Include="Models\Figures\TwoDimensional\TwoDimensional.cs" />

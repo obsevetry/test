@@ -50,7 +50,7 @@ namespace _20191213_Figures.Models.Figures.OneDimensional
                     Y = (int)(_k * (double)i + _b)
                 };
 
-                DrawPoint(NewCoordinate);
+                UI.DrawPoint(NewCoordinate, this);
 			}
         }
     }

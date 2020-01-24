@@ -9,7 +9,7 @@ namespace _20191213_Figures.Models.Figures.ZeroDimensional
     {
         public override void Show()
         {
-            DrawPoint(CenterPosition);
+            UI.DrawPoint(CenterPosition, this);
         }
     }
 }
