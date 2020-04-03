@@ -26,8 +26,6 @@ namespace _20191213_Figures.Models.Figures.TwoDimensional
                             Y = y
                         };
 
-                        //System.Threading.Thread.Sleep(500);
-
                         UI.DrawPoint(NewCoordinate, this);
                     }
                 }
