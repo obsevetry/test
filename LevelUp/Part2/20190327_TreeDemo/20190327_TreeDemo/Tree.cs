@@ -67,7 +67,8 @@ namespace _20190327_TreeDemo
             {
                 return null;
             }
-            else if (root.Id.CompareTo(key) == 0)
+
+            if (root.Id.CompareTo(key) == 0)
             {
                 if (root.Deleted)
                 {
@@ -76,7 +77,8 @@ namespace _20190327_TreeDemo
 
                 return root;
             }
-            else if (root.Id.CompareTo(key) > 0)
+
+            if (root.Id.CompareTo(key) > 0)
             {
                 return SearchRootByKey(key, root._left);
             }
