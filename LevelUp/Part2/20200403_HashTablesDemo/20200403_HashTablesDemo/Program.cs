@@ -7,33 +7,42 @@ using System.Threading.Tasks;
 namespace _20200403_HashTablesDemo
 {
     class Program
-    {
-        
+    {       
         static void Main(string[] args)
         {
-            StringSet set1 = new StringSet();
+            StringSet set1 = new StringSet("set1"); // 100, 200, 300, 400, 500, 600, abcd, zzzzz, cbad
 
+            StringSet set2 = new StringSet("set2");// 300, 400, 500, 600, 700, 800, 900, 1000
+
+            FillData(set1, set2);
+
+            set1.Print();
+            set2.Print();
+
+            Console.WriteLine("" +
+                "set1 ExceptWith set2 :");
+
+            set1.ExceptWith(set2);
+            set1.Print();
+
+            Console.ReadKey();
+
+        }
+        public static void FillData(StringSet set1, StringSet set2)
+        {
             set1.Add("abcd");
             set1.Add("zzzzz");
             set1.Add("cbad");
 
-            string key1 = "abcd";
+            for (int i = 1; i <= 6; i++)
+            {
+                set1.Add((100*i).ToString());
+            }
 
-            DoCheck(set1, key1);
-
-            string key2 = "zzzzz";
-
-            DoCheck(set1, key2);
-
-            string key3 = "11111";
-
-            DoCheck(set1, key3);
-
-            string key4 = "cbad";
-
-            DoCheck(set1, key4);
-
-            Console.ReadKey();
+            for (int i = 3; i <= 10; i++)
+            {
+                set2.Add((100*i).ToString());
+            }
         }
 
         private static void DoCheck(StringSet set, string key)

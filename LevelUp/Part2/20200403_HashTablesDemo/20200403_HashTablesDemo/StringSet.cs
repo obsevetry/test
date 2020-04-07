@@ -10,33 +10,94 @@ namespace _20200403_HashTablesDemo
     // каждый элемент либо присутствует либо отсутсвует
     //  TKey     -->  TValue
     // string          bool
-    class StringSet //: ISet<string>    // !!! HW !!!
+    class StringSet //: //ISet<List<String>>    // !!! HW !!!
     {
         public const int DEFAULT_CAPACITY = 100;
 
-        private string[] _items;
+        private List<String>[] _items;
 
-        public StringSet(int capacity = DEFAULT_CAPACITY)
+        private string _name;
+
+        public StringSet(string name = "", int capacity = DEFAULT_CAPACITY)
         {
-            _items = new string[capacity];
+            _name = name;
+            _items = new List<String>[capacity];
         }
 
-        public void Add(string k)
-        { 
-            int index = HashFunc(k);    // нахождение позиции по ключу
+        //
+        // Сводка:
+        //     Добавляет элемент в текущий набор и возвращает значение, указывающее, что элемент
+        //     был добавлен успешно.
+        //
+        // Параметры:
+        //   item:
+        //     Элемент, добавляемый в набор.
+        //
+        // Возврат:
+        //     Значение true, если элемент добавлен в набор; значение false, если элемент уже
+        //     был в наборе.
+        public bool Add(String item)
+        {
+            bool result = false;
+            
+            int index = HashFunc(item); // нахождение позиции по ключу
 
-            //
-            while (_items[index] != null)    // нахождение свободной позиции
+            if (_items[index] == null) // Нашли пустой индекс
             {
-                ++index;
+                _items[index] = new List<String>();
+                _items[index].Add(item);
 
-                if (index >= _items.Length)
-                {
-                    throw new Exception("!!!");
-                }
+                result = true;
+            }
+            else if (!this[item]) // Добавляем новое значение в список
+            {
+                _items[index].Add(item);
+
+                result = true;
             }
 
-            _items[index] = k;
+            return result;
+        }
+
+        //
+        // Сводка:
+        //     Удаляет все элементы указанной коллекции из текущего набора.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция элементов, которые нужно удалить из набора.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public void ExceptWith(StringSet other)
+        {            
+            for (int i = 0; i < _items.Count(); i++)
+            {
+                if (_items[i] == null)
+                {
+                    continue;
+                }
+
+                if (other._items[i] == null)
+                {
+                    continue;
+                }
+
+                if (i >= other._items.Count())
+                {
+                    return;
+                }
+
+                foreach (string item in other._items[i])
+                {
+                    if (_items[i].Contains(item))
+                    {
+                        _items[i].Remove(item);
+                    }
+                }
+
+            }
         }
 
         public bool this[string key]
@@ -49,19 +110,35 @@ namespace _20200403_HashTablesDemo
 
                 if (_items[index] != null)
                 {
-                    while (_items[index] != null)
+                    foreach (string item in _items[index]) // Проверка есть ли уже такое значение в списке
                     {
-                        if (IsEqulString(key, _items[index]))
+                        if (IsEqulString(item, key))
                         {
                             result = true;
                             break;
-                        }                    
-                        ++index;
-                    }                    
+                        }
+                    }                   
                 }
 
                 return result;
             }
+        }
+
+        public void Print()
+        {
+            Console.Write(_name + ": ");
+            for (int i = 0; i < DEFAULT_CAPACITY; i++)
+            {
+                if (_items[i] == null)
+                {
+                    continue;
+                }
+                foreach (string item in _items[i])
+                {
+                    Console.Write(item + " ");
+                }
+            }
+            Console.WriteLine();
         }
 
         // Хэш-функция: string ---> int
