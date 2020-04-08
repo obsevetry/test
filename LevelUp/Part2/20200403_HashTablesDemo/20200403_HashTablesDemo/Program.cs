@@ -16,20 +16,46 @@ namespace _20200403_HashTablesDemo
 
             FillData(set1, set2);
 
-            set1.Print();
-            set2.Print();
+            Print(set1, set2);
 
+            #region ExceptWith
             Console.WriteLine("" +
                 "set1 ExceptWith set2 :");
 
             set1.ExceptWith(set2);
             set1.Print();
+            #endregion
+
+            #region IntersectWith
+            FillData(set1, set2);
+
+           //Print(set1, set2);
+
+            Console.WriteLine("" +
+                "set1 IntersectWith set2 :");
+
+            set1.IntersectWith(set2);
+            set1.Print();
+            #endregion
+
 
             Console.ReadKey();
 
         }
+
+        public static void Print(StringSet set1, StringSet set2)
+        {
+            set1.Print();
+            set2.Print();
+        }
+
         public static void FillData(StringSet set1, StringSet set2)
         {
+
+            set1.RemoveAll();
+
+            set2.RemoveAll();
+
             set1.Add("abcd");
             set1.Add("zzzzz");
             set1.Add("cbad");
@@ -42,18 +68,6 @@ namespace _20200403_HashTablesDemo
             for (int i = 3; i <= 10; i++)
             {
                 set2.Add((100*i).ToString());
-            }
-        }
-
-        private static void DoCheck(StringSet set, string key)
-        {
-            if (set[key])
-            {
-                Console.WriteLine("{0} in set", key);
-            }
-            else
-            {
-                Console.WriteLine("{0} not in set", key);
             }
         }
     }

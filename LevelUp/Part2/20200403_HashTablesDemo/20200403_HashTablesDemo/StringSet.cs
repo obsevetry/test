@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace _20200403_HashTablesDemo
     // каждый элемент либо присутствует либо отсутсвует
     //  TKey     -->  TValue
     // string          bool
-    class StringSet //: //ISet<List<String>>    // !!! HW !!!
+    class StringSet : IEnumerable//, ISet <String>    // !!! HW !!!
     {
         public const int DEFAULT_CAPACITY = 100;
 
@@ -23,6 +24,13 @@ namespace _20200403_HashTablesDemo
             _name = name;
             _items = new List<String>[capacity];
         }
+
+        public IEnumerator GetEnumerator()
+        {
+            return _items.GetEnumerator();
+        }
+
+        #region Реализация ISet
 
         //
         // Сводка:
@@ -39,7 +47,7 @@ namespace _20200403_HashTablesDemo
         public bool Add(String item)
         {
             bool result = false;
-            
+
             int index = HashFunc(item); // нахождение позиции по ключу
 
             if (_items[index] == null) // Нашли пустой индекс
@@ -70,8 +78,8 @@ namespace _20200403_HashTablesDemo
         // Исключения:
         //   T:System.ArgumentNullException:
         //     Свойство other имеет значение null.
-        public void ExceptWith(StringSet other)
-        {            
+        public void ExceptWith(StringSet other) //
+        {
             for (int i = 0; i < _items.Count(); i++)
             {
                 if (_items[i] == null)
@@ -84,11 +92,6 @@ namespace _20200403_HashTablesDemo
                     continue;
                 }
 
-                if (i >= other._items.Count())
-                {
-                    return;
-                }
-
                 foreach (string item in other._items[i])
                 {
                     if (_items[i].Contains(item))
@@ -96,9 +99,54 @@ namespace _20200403_HashTablesDemo
                         _items[i].Remove(item);
                     }
                 }
-
             }
         }
+
+        //
+        // Сводка:
+        //     Изменяет текущий набор, чтобы он содержал только элементы, которые также имеются
+        //     в заданной коллекции.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция для сравнения с текущим набором.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public void IntersectWith(StringSet other)
+        {
+            for (int i = 0; i < _items.Count(); i++)
+            {
+                if (_items[i] == null)
+                {
+                    continue;
+                }
+
+                if (other._items[i] == null)
+                {
+                    _items[i] = null;
+                    continue;
+                }
+
+                foreach (string item in other._items[i])
+                {
+                    if (!_items[i].Contains(item))
+                    {
+                        _items[i].Remove(item);
+                    }
+                }
+
+                for (int j = 0; j < _items[i].Count(); j++)
+                {
+                    if (!other._items[i].Contains(_items[i][j]))
+                    {
+                        _items[i].Remove(_items[i][j]);
+                    }
+                }
+            }
+        }
+        #endregion
 
         public bool this[string key]
         {
@@ -117,16 +165,25 @@ namespace _20200403_HashTablesDemo
                             result = true;
                             break;
                         }
-                    }                   
+                    }
                 }
 
                 return result;
             }
         }
 
+        public void RemoveAll()
+        {
+            for (int i = 0; i < _items.Count(); i++)
+            {
+                _items[i] = null;
+            }
+        }
+
         public void Print()
         {
             Console.Write(_name + ": ");
+
             for (int i = 0; i < DEFAULT_CAPACITY; i++)
             {
                 if (_items[i] == null)
@@ -138,6 +195,7 @@ namespace _20200403_HashTablesDemo
                     Console.Write(item + " ");
                 }
             }
+
             Console.WriteLine();
         }
 
