@@ -14,9 +14,11 @@ namespace _20200403_HashTablesDemo
 
             StringSet set2 = new StringSet("set2");// 300, 400, 500, 600, 700, 800, 900, 1000
 
-            FillData(set1, set2);
+            StringSet setAll = new StringSet("setAll");// 300, 400, 500, 600, 700, 800, 900, 1000
 
-            Print(set1, set2);
+            FillData(set1, set2, setAll);
+
+            Print(set1, set2, setAll);
 
             #region ExceptWith
             Console.WriteLine("" +
@@ -27,9 +29,7 @@ namespace _20200403_HashTablesDemo
             #endregion
 
             #region IntersectWith
-            FillData(set1, set2);
-
-           //Print(set1, set2);
+            FillData(set1, set2, setAll);
 
             Console.WriteLine("" +
                 "set1 IntersectWith set2 :");
@@ -38,36 +38,79 @@ namespace _20200403_HashTablesDemo
             set1.Print();
             #endregion
 
+            #region IsProperSubsetOf
+            FillData(set1, set2, setAll);
+
+            Console.WriteLine("" +
+                "set1 IsProperSubsetOf setAll : {0}", set1.IsProperSubsetOf(setAll));
+
+            #endregion
+
+            #region IsProperSubsetOf
+            FillData(set1, set2, setAll);
+
+            Console.WriteLine("" +
+                "set1 IsProperSubsetOf setAll : {0}", set1.IsProperSupersetOf(setAll));
+
+            #endregion
+
+            #region SetEquals
+            FillData(set1, set2, setAll);
+
+            Console.WriteLine("" +
+                "set1 SetEquals setAll : {0}", set1.SetEquals(setAll));
+
+            #endregion
+
+            #region Overlaps
+            FillData(set1, set2, setAll);
+
+            Console.WriteLine("" +
+                "set1 Overlaps setAll : {0}", set1.Overlaps(setAll));
+
+            #endregion
+
 
             Console.ReadKey();
 
         }
 
-        public static void Print(StringSet set1, StringSet set2)
+        public static void Print(StringSet set1, StringSet set2, StringSet setAll)
         {
             set1.Print();
             set2.Print();
+            setAll.Print();
         }
 
-        public static void FillData(StringSet set1, StringSet set2)
+        public static void FillData(StringSet set1, StringSet set2, StringSet setAll)
         {
 
             set1.RemoveAll();
 
             set2.RemoveAll();
 
+            setAll.RemoveAll();
+
             set1.Add("abcd");
             set1.Add("zzzzz");
             set1.Add("cbad");
 
+            setAll.Add("abcd");
+            setAll.Add("zzzzz");
+            setAll.Add("cbad");
+
             for (int i = 1; i <= 6; i++)
             {
-                set1.Add((100*i).ToString());
+                string str = (100 * i).ToString();
+                set1.Add(str);
+                setAll.Add(str);
             }
 
             for (int i = 3; i <= 10; i++)
             {
-                set2.Add((100*i).ToString());
+                string str = (100 * i).ToString();
+                set2.Add(str);
+                setAll.Add(str);
             }
         }
     }

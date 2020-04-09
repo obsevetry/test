@@ -11,7 +11,7 @@ namespace _20200403_HashTablesDemo
     // каждый элемент либо присутствует либо отсутсвует
     //  TKey     -->  TValue
     // string          bool
-    class StringSet : IEnumerable//, ISet <String>    // !!! HW !!!
+    class StringSet : IEnumerable//, ISet<String>    // !!! HW !!!
     {
         public const int DEFAULT_CAPACITY = 100;
 
@@ -146,6 +146,246 @@ namespace _20200403_HashTablesDemo
                 }
             }
         }
+
+        //
+        // Сводка:
+        //     Определяет, является ли текущий набор должным (строгим) подмножеством заданной
+        //     коллекции.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция для сравнения с текущим набором.
+        //
+        // Возврат:
+        //     Значение true, если текущий набор является строгим подмножеством объекта other;
+        //     в противном случае — значение false.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public bool IsProperSubsetOf(StringSet other)
+        {
+            if (this.Equals(other))
+            {
+                return false;
+            }
+            
+            bool result = true;
+
+            for (int i = 0; i < _items.Count(); i++)
+            {
+                if (_items[i] == null)
+                {
+                    continue;
+                }
+
+                if (other._items[i] == null)
+                {
+                    result = false;
+                    break;
+                }
+
+                foreach (string item in _items[i])
+                {
+                    if (!other._items[i].Contains(item))
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+
+                if (!result)
+                {
+                    break;
+                }
+
+            }
+
+            return result;
+        }
+
+        //
+        // Сводка:
+        //     Определяет, является ли текущий набор должным (строгим) подмножеством заданной
+        //     коллекции.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция для сравнения с текущим набором.
+        //
+        // Возврат:
+        //     Значение true, если текущий набор является строгим надмножеством объекта other;
+        //     в противном случае — значение false.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public bool IsProperSupersetOf(StringSet other)
+        {
+            return other.IsProperSubsetOf(this);
+        }
+
+        //
+        // Сводка:
+        //     Определяет, содержат ли текущий набор и указанная коллекция одни и те же элементы.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция для сравнения с текущим набором.
+        //
+        // Возврат:
+        //     Значение true, если текущий набор равен объекту other; в противном случае — значение
+        //     false.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public bool SetEquals(StringSet other)
+        {
+            bool result = true;
+
+            for (int i = 0; i < _items.Count(); i++)
+            {
+                if (_items[i] == null && other._items[i] == null)
+                {
+                    continue;
+                }
+
+                if (_items[i] != null && other._items[i] != null)
+                {
+                    if (!_items[i].Equals(other._items[i]))
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+                else
+                {
+                    result = false;
+                    break;
+                }           
+            }
+
+            return result;
+        }
+
+        //
+        // Сводка:
+        //     Определяет, является ли набор подмножеством заданной коллекции.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция для сравнения с текущим набором.
+        //
+        // Возврат:
+        //     Значение true, если текущий набор является подмножеством объекта other; в противном
+        //     случае — значение false.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public bool IsSubsetOf(StringSet other)
+        {
+            bool result = true;
+
+            for (int i = 0; i < _items.Count(); i++)
+            {
+                if (_items[i] == null)
+                {
+                    continue;
+                }
+
+                if (other._items[i] == null)
+                {
+                    result = false;
+                    break;
+                }
+
+                foreach (string item in _items[i])
+                {
+                    if (!other._items[i].Contains(item))
+                    {
+                        result = false;
+                        break;
+                    }
+                }
+
+                if (!result)
+                {
+                    break;
+                }
+
+            }
+
+            return result;
+        }
+
+        //
+        // Сводка:
+        //     Определяет, является ли текущий набор надмножеством заданной коллекции.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция для сравнения с текущим набором.
+        //
+        // Возврат:
+        //     Значение true, если текущий набор является надмножеством объекта other; в противном
+        //     случае — значение false.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public bool IsSupersetOf(StringSet other)
+        {
+            return other.IsSubsetOf(this);
+        }
+
+        //
+        // Сводка:
+        //     Определяет, пересекаются ли текущий набор и указанная коллекция.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция для сравнения с текущим набором.
+        //
+        // Возврат:
+        //     Значение true, если в текущем наборе и объекте other есть хотя бы один общий
+        //     элемент; в противном случае — значение false.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public bool Overlaps(StringSet other)
+        {
+            bool result = false;
+
+            for (int i = 0; i < _items.Count(); i++)
+            {
+                if (_items[i] == null && other._items[i] == null)
+                {
+                    continue;
+                }
+
+                if (_items[i] != null && other._items[i] != null)
+                {
+                    foreach (string item in _items[i])
+                    {
+                        if (other._items[i].Contains(item))
+                        {
+                            result = true;
+                            break;
+                        }
+                    }
+                    if (result)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            return result;
+        }
+
         #endregion
 
         public bool this[string key]
