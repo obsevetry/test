@@ -11,7 +11,7 @@ namespace _20200403_HashTablesDemo
     // каждый элемент либо присутствует либо отсутсвует
     //  TKey     -->  TValue
     // string          bool
-    class StringSet : IEnumerable//, ISet<String>    // !!! HW !!!
+    class StringSet //: ISet<String>    // !!! HW !!!
     {
         public const int DEFAULT_CAPACITY = 100;
 
@@ -386,6 +386,81 @@ namespace _20200403_HashTablesDemo
             return result;
         }
 
+        //
+        // Сводка:
+        //     Изменяет текущий набор таким образом, чтобы он содержал только элементы, которые
+        //     есть либо в нем, либо в указанной коллекции, но не одновременно там и там.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция для сравнения с текущим набором.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public void SymmetricExceptWith(StringSet other)
+        {
+            for (int i = 0; i < _items.Count(); i++)
+            {
+                if (other._items[i] == null)
+                {
+                    continue;
+                }
+                foreach (string item in other._items[i])
+                {
+                    if (_items[i] == null)
+                    {
+                        Add(item);
+                        continue;
+                    }
+
+                    if (_items[i].Contains(item))
+                    {
+                        _items[i].Remove(item);
+                    }
+                    else
+                    {
+                        _items[i].Add(item);
+                    }
+                }
+            }
+        }
+
+        //
+        // Сводка:
+        //     Изменяет текущий набор так, чтобы он содержал все элементы, которые имеются в
+        //     текущем наборе, в указанной коллекции либо в них обоих.
+        //
+        // Параметры:
+        //   other:
+        //     Коллекция для сравнения с текущим набором.
+        //
+        // Исключения:
+        //   T:System.ArgumentNullException:
+        //     Свойство other имеет значение null.
+        public void UnionWith(StringSet other)
+        {
+            for (int i = 0; i < _items.Count(); i++)
+            {
+                if (other._items[i] == null)
+                {
+                    continue;
+                }
+                foreach (string item in other._items[i])
+                {
+                    if (_items[i] == null)
+                    {
+                        Add(item);
+                        continue;
+                    }
+
+                    if (!_items[i].Contains(item))
+                    {
+                        _items[i].Add(item);
+                    }
+                }
+            }
+        }
         #endregion
 
         public bool this[string key]

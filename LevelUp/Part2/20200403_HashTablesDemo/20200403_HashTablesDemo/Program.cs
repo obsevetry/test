@@ -70,6 +70,22 @@ namespace _20200403_HashTablesDemo
 
             #endregion
 
+            #region SymmetricExceptWith
+            FillData(set1, set2, setAll);
+
+            set1.SymmetricExceptWith(set2);
+
+            set1.Print();
+            #endregion
+
+            #region UnionWith
+            FillData(set1, set2, setAll);
+
+            set1.UnionWith(set2);
+
+            set1.Print();
+            #endregion
+
 
             Console.ReadKey();
 
