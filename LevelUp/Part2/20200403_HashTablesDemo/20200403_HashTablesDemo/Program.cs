@@ -75,6 +75,8 @@ namespace _20200403_HashTablesDemo
 
             set1.SymmetricExceptWith(set2);
 
+            Console.WriteLine("" +
+                "set1 SymmetricExceptWith set2 :");
             set1.Print();
             #endregion
 
