@@ -31,6 +31,9 @@ namespace _20200418_MyQueue
 
             Console.WriteLine("Length {0}", myQueue.Length);
 
+            Console.WriteLine("Извлекли {0}", myQueue.Dequeue());
+            Console.WriteLine("Извлекли {0}", myQueue.Dequeue());
+
             Print(myQueue);
 
             Console.ReadKey();
