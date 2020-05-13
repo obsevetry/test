@@ -12,8 +12,6 @@ namespace SeaFightLibrary
         protected internal event PlayerStateHandler Shooted;
 
         protected string _name;
-        protected Cell[] _cells;
-        protected Ship[] _ships;
 
         private void CallEvent(PlayerEventArgs e, PlayerStateHandler handler)
         {

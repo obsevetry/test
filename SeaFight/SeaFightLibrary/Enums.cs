@@ -15,7 +15,7 @@ namespace SeaFightLibrary
     public enum ShipState
     {
         Alive,
-        Rilled
+        Killed
     }
 
     public enum ShipPosition

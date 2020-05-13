@@ -10,17 +10,17 @@ namespace SeaFightLibrary
     {
         private string _x;
         private string _y;
-        private string _cellCoordinate;
+        private string _cellCoordinates;
 
         public string X { get => _x; }
         public string Y { get => _y; }
-        public string CellCoordinate { get => _cellCoordinate; }
+        public string CellCoordinates { get => _cellCoordinates; }
 
         public Coordinate(string A, string B)
         {
             _x = A;
             _y = B;
-            _cellCoordinate = _x + _y;
+            _cellCoordinates = _x + _y;
         }
     }
 }

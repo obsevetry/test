@@ -35,9 +35,13 @@ namespace ReadOnlyCollections
             Console.WriteLine("\nIndexOf(\"Compsognathus\"): {0}",
                 readOnlyDinosaurs.IndexOf("Compsognathus"));
 
+            ((IList<string>)readOnlyDinosaurs).Add("mnkjhkjh");
+
             Console.WriteLine("\nInsert into the wrapped List:");
             Console.WriteLine("Insert(2, \"Oviraptor\")");
             dinosaurs.Insert(2, "Oviraptor");
+
+
 
             Console.WriteLine();
             foreach (string dinosaur in readOnlyDinosaurs)
